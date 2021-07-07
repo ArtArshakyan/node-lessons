@@ -18,7 +18,6 @@
     "url": "https://github.com/ArtArshakyan/node-lessons/issues"
   },
   "homepage": "https://github.com/ArtArshakyan/node-lessons#readme",
-  "dependencies": {},
   "devDependencies": {
     "nodemon": "^2.0.9"
   }
