@@ -1,34 +1,36 @@
 const http = require('http')
 const { EventEmitter } = require('events')
+const argv = require('minimist')(process.argv.slice(2))
+
+console.log('argv', argv)
 
 const logger = new EventEmitter()
 
 const users = []
 const msgs = []
 
-logger.on('message', (msg) => {
-    console.log(`New Message ${msg}`)
-    msgs.push(msg)
+logger.on('login', (name) => {
+    users.push(name)
+    argv.addUser && users.push(argv.addUser)
 })
 
-logger.on('login', (name) => {
-    console.log(`New User ${name}`)
-    users.push('name')
+logger.on('message', (msg) => {
+    msgs.push(msg)
+    argv.message && msgs.push(argv.message)
 })
 
 logger.on('getUser', () => {
-    console.log(`Logged Users\n${users.join('\n')}`)
+    console.log(`Logged Users :\n${users.join('\n')}`)
 })
 
 logger.on('getMessage', () => {
-    console.log(`Messages\n${msgs.join('\n')}`)
+    console.log(`Messages :\n${msgs.join('\n')}`)
 })
 
+logger.emit('login', 'John')
 logger.emit('message', 'Hello World')
-logger.emit('login', 'Artur')
-logger.emit('login', 'Arshakyan')
-logger.emit('getUser', users)
-logger.emit('getMessage', msgs)
+logger.emit('getUser')
+logger.emit('getMessage')
 
 const server = http.createServer((req, res) => {
     res.write('<h1>Hello Node JS</h1>')

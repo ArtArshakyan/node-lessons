@@ -1,24 +1,26 @@
 {
-  "name": "node-lessons",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArtArshakyan/node-lessons.git"
-  },
-  "keywords": [],
-  "author": "Artur Arshakyan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArtArshakyan/node-lessons/issues"
-  },
-  "homepage": "https://github.com/ArtArshakyan/node-lessons#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.9"
-  }
+    "name": "node-lessons",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "user": "node index.js --addUser Artur",
+        "message": "node index.js --message Hello"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ArtArshakyan/node-lessons.git"
+    },
+    "keywords": [],
+    "author": "Artur Arshakyan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ArtArshakyan/node-lessons/issues"
+    },
+    "homepage": "https://github.com/ArtArshakyan/node-lessons#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.9"
+    }
 }
