@@ -20,5 +20,8 @@
   "homepage": "https://github.com/ArtArshakyan/node-lessons#readme",
   "devDependencies": {
     "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10"
   }
 }
