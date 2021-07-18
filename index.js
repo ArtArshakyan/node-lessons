@@ -1,67 +1,69 @@
 const fs = require('fs')
 const path = require('path')
 const extract = require('extract-zip')
+const tree = require('tree-node-cli')
 
 async function main() {
     try {
         await extract('chalk.zip', { dir: path.join(__dirname) })
         console.log('Extraction complete')
 
-        let pathParams = process.argv[2] //Get the path parameter, the third parameter in the cmd command
+        const string = tree('chalk', {
+            allFiles: true,
+        })
 
-        if (!pathParams) {
-            pathParams = 'chalk'
-        }
-
-        //Turn to an absolute path
-        pathParams = path.resolve(pathParams)
-
-        //Level identification
-        let index = 0
-
-        function dirTree(pathParams) {
-            //Deep search
-
-            if (!fs.statSync(pathParams).isFile()) {
-                //Whether it is a file
-                console.log(markTree(index), getName(pathParams))
-
-                let dirLis = fs.readdirSync(pathParams)
-
-                index++ //Enter the next level
-
-                for (let i = 0; i < dirLis.length; i++) {
-                    dirTree(path.join(pathParams, dirLis[i]))
-                }
-
-                index-- //Back to previous
-            } else {
-                console.log(markTree(index), getName(pathParams))
-            }
-        }
-
-        //Generate proportional file breaks
-        function markTree(index) {
-            if (index === 0) {
-                return ''
-            }
-            let str = ''
-            for (let i = 0; i < index; i++) {
-                str += ' |__'
-            }
-            return str
-        }
-
-        //Return the directory name, or file name
-        function getName(pathParams) {
-            return path.parse(pathParams).base
-        }
-
-        //Specify the generated directory tree
-        dirTree(pathParams)
+        console.log(string)
     } catch (err) {
         console.log(err)
     }
 }
-
 main()
+
+/** Custom implementation */
+
+// let deep = 0
+// async function main() {
+//     try {
+//         await extract('chalk.zip', { dir: path.join(__dirname) })
+//         console.log('Extraction complete')
+
+//         function deepTree(pathName) {
+//             if (!fs.statSync(pathName).isFile()) {
+//                 console.log(markTree(deep), getName(pathName))
+
+//                 let dirList = fs.readdirSync(pathName)
+
+//                 deep++
+
+//                 for (let i = 0; i < dirList.length; i++) {
+//                     deepTree(path.join(pathName, dirList[i]))
+//                 }
+
+//                 deep--
+//             } else {
+//                 console.log(markTree(deep), getName(pathName))
+//             }
+//         }
+
+//         deepTree('chalk')
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+// function markTree(deep) {
+//     if (deep === 0) {
+//         return ''
+//     }
+//     let str = ''
+//     for (let i = 0; i < deep; i++) {
+//         str += '|__'
+//     }
+//     return str
+// }
+
+// function getName(pathName) {
+//     return path.parse(pathName).base
+// }
+
+// main()
