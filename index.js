@@ -7,11 +7,14 @@ const csvFilePath = path.join(__dirname, 'addresses.csv')
 csvToJson()
     .fromFile(csvFilePath)
     .then((jsonObj) => {
-        
-        fs.writeFileSync(
-            path.join(__dirname, 'addresses.json'),
-            JSON.stringify(jsonObj, null, 2)
-        )
+        try {
+            fs.writeFileSync(
+                path.join(__dirname, 'addresses.json'),
+                JSON.stringify(jsonObj, null, 2)
+            )
+        } catch (err) {
+            console.log(err)
+        }
 
         // fs.writeFile(
         //     path.join(__dirname, 'addresses.json'),
