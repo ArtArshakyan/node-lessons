@@ -21,6 +21,8 @@ main()
 
 /** Custom implementation */
 
+//// Variant 1 ////
+
 // let deep = 0
 // async function main() {
 //     try {
@@ -67,3 +69,25 @@ main()
 // }
 
 // main()
+
+// // Varialt 2 ////
+// function traverse(dir, i) {
+//     var str = ''
+//     if (i > 0) {
+//         for (var j = 0; j < i - 1; j++) {
+//             str += '\t'
+//         }
+//         str += '|'
+//         str += '__'
+//     }
+//     console.log(str + path.basename(dir))
+//     if (!fs.lstatSync(dir).isDirectory()) {
+//         return
+//     }
+//     var files = fs.readdirSync(dir)
+//     i++
+//     files.forEach(function (file) {
+//         traverse(path.join(dir, file), i)
+//     })
+// }
+// traverse('./api-tests', 0)
