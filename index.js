@@ -1,10 +1,21 @@
-const http = require('http')
+const cluster = require('cluster')
 
-const server = http.createServer((req, res) => {
-    res.write('<h1>Hello Node JS</h1>')
-    res.end()
-})
+if (cluster.isMaster) {
 
-server.listen(3000, () => {
-    console.log('Server is running...')
-})
+    // Fork workers.
+    for (let i = 1; i <= 2; i++) { // for 2 processor
+        cluster.fork()
+    }
+    
+} else {
+    console.log(factorial(50))
+    process.exit(0)
+}
+
+function factorial(n) {
+    if (n <= 1) {
+        return 1
+    }
+
+    return n * factorial(n - 1)
+}
