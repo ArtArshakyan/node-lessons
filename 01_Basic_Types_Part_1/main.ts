@@ -21,6 +21,7 @@ typeof [];          // "object"
 typeof {};          // "object"
 typeof null;        // "object"
 typeof undefined;   // "undefined"
+typeof BigInt;      // "number"
 typeof Symbol();    // "symbol"
 
 // const
@@ -47,7 +48,7 @@ const binary: number = 0b1010;
 const octal: number = 0o744;
 
 // String Type for simple string
-const name: string = 'Yauhen';
+const name: string = 'John';
 
 // String Type for template string
 const sentence: string = `Hello, my name is ${ name }!`;
