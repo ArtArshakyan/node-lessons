@@ -1,24 +1,27 @@
 {
-  "name": "node-lessons",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArtArshakyan/node-lessons.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArtArshakyan/node-lessons/issues"
-  },
-  "homepage": "https://github.com/ArtArshakyan/node-lessons#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.9"
-  }
+    "name": "node-lessons",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "compile": "npx tsc",
+        "exec": "node ./dist/index.js",
+        "start": "npm run compile && npm run exec",
+        "dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ArtArshakyan/node-lessons.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ArtArshakyan/node-lessons/issues"
+    },
+    "homepage": "https://github.com/ArtArshakyan/node-lessons#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.9",
+        "typescript": "^4.3.5"
+    }
 }
