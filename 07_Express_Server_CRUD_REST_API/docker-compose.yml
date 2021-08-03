@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    rest-api-node:
+        container_name: RestApi.NODE
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8000:8000
+        volumes:
+            - .:/rest-api
+            - '/rest-api/node_modules'
+
+    rest-api-mysql:
+        container_name: RestApi.MySQL
+        image: mysql:8.0
+        environment:
+            - MYSQL_DATABASE=test_db
+            - MYSQL_USER=test_user
+            - MYSQL_PASSWORD=root
+            - MYSQL_ROOT_PASSWORD=root
