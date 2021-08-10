@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+    app:
+        build:
+            context: .
+        restart: always
+        env_file:
+            - .env
+        environment:
+            - MAIL_FROM=${MAIL_FROM}
+            - MAIL_TO=${MAIL_TO}
+            - MAIL_USER=${MAIL_USER}
+            - MAil_PASS=${MAil_PASS}
+        ports:
+            - '465'
+        volumes:
+            - ./src/:/app/src/
+
+networks:
+    local-net:
+        external: false
