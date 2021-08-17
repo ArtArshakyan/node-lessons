@@ -1,0 +1,6 @@
+user.id=2
+user.name=John
+user.lastName=Smith
+user.birthday.day=10
+user.birthday.month=4
+user.birthday.year=1990

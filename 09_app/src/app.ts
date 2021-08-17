@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express'
 import dotenv from 'dotenv'
-import cors from "cors"
+import cors from 'cors'
 import compression from 'compression'
 
 dotenv.config()

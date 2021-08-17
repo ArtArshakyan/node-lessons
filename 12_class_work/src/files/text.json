@@ -1,0 +1,12 @@
+{
+    "user": {
+        "id": "2",
+        "name": "John",
+        "lastName": "Smith",
+        "birthday": {
+            "day": "10",
+            "month": "4",
+            "year": "1990"
+        }
+    }
+}
