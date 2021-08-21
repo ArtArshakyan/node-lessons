@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+    app:
+        container_name: app_container
+        build:
+            context: .
+        volumes:
+            - ./src/:/app/src/
+        ports:
+            - '3000:3000'
+        depends_on:
+            - postgres_db
+        networks:
+            - postgres_db
+    postgres_db:
+        container_name: postgres_container
+        image: postgres
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - '5432:5432'
+        networks:
+            - postgres_db
+        restart: always
+
+networks:
+    postgres_db:
+        driver: bridge
+    
+volumes:
+    postgres_db:
+    app:
